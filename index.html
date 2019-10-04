@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>TravelBuddy</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		
+		<section class="hero">
+			<a href="#"><img src="#" alt="TravelBuddy" class="logo"></a>
+			<h1>Explore any city in the world!</h1>
+			<form role="search" action="/" method="get" class="search-form">
+				<div>
+					<label for="city-search"><span class="hidden">Search for a city name</span></label>
+					<input type="text" id="city-search" class="city-input" placeholder="Search for any city">
+				</div>
+				<div>
+					<label for="category-search"><span class="hidden">Search for a category of place</span></label>
+					<input type="text" id="category-search" class="category-input" placeholder="What do you want to see?">
+				</div>
+				
+				<button type="submit" class="submit-button js-submit">
+			    	<span class="hidden">Submit Search</span>
+			    	<span>Submit</span>
+			  	</button>
+			  	<button type="submit" class="small-submit-button hidden">
+			    	<span class="hidden">Submit Search</span>
+			    	<img src="https://img.icons8.com/ios-glyphs/50/000000/search.png">
+			  	</button>
+			</form>
+		</section>
+		
+		<section class="rec-categories">
+			<h3>Recommended Categories</h3>
+			<section class="category-boxes">
+				<div class="box"><img src=""><p>Restaurants</p></div>
+				<div class="box"><img src=""><p>Museums</p></div>
+				<div class="box"><img src=""><p>Shopping</p></div>
+				<div class="box"><img src=""><p>Coffee</p></div>
+				<div class="box"><img src=""><p>Parks</p></div>
+				<div class="box"><img src=""><p>Nightlife</p></div>
+				<div class="box"><img src=""><p>Monuments</p></div>
+				<div class="box"><img src=""><p>Hotels</p></div>
+			</section>
+		</section>
+
+		<main>
+			<section class="places-section">
+				<h1>Results for category in place</h1>
+				<ul class="js-search-results places-results">
+					<li class="places-result-item">
+						<img src="images/sample-img.png" alt="" class="places-image">
+						<div>
+							<div class="places-name-and-rating">
+								<a href="#map"><h3 class="name">Name</h3></a>
+								<div class="rating-container">
+									<p class="places-rating">9.2</p>
+								</div>
+							</div>
+							<div class="places-info">
+								<p class="places-category">Category</p>
+								<p class="places-price">Price Level</p>
+								<p class="places-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</section>
+			<section class="map-section">
+				<h2>Map of place</h2>
+				<div id="map"></div>
+			</section>
+			<section class="wikipedia-section">
+				<h2>Background Information</h2>
+				<div class="wikipedia-info">
+					<h3 class="wikipedia-title">Title</h3>
+					<p class="wikipedia-excerpt">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p class="wikipedia-link">More about Place <a href="#">here</a></p>
+				</div>
+			</section>
+			<section class="news-section">
+				<h2>News about place</h2>
+				<ul class="news-results">
+					<li class="news-item">
+						<img src="images/sample-img.png" alt="" class="news-image">
+						<div>
+							<a href="#"><h3 class="name">Title</h3></a>
+							<div class="news-info">
+								<p class="news-credit">by Author from Source</p>
+								<p class="news-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+								<p class="news-published">Published 10/4/2019 at 6:30pm EST</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</main>
+
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
