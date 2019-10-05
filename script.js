@@ -10,17 +10,16 @@ function formatQuery(params) {
 	return queryItems.join('&')
 } 
 
-
 //generate foursquare information
 function searchFoursquare(query, near) {
-	const endpoint = 'search'
+	const endpoint = 'explore'
 	const params = {
 		client_id: foursquareId,
 		client_secret: foursquareKey,
 		v: foursquareVersion,
 		near,
 		query,
-		limit: 1
+		limit: 10
 	}
 	const url = `${foursquareSearchURL}${endpoint}?${formatQuery(params)}`
 	fetch(url)
@@ -29,37 +28,68 @@ function searchFoursquare(query, near) {
 }
 
 function getAllDetails(response) {
-	for (i=0; i < response.response.venues.length; i++)  {
-		const venueId = response.response.venues[i].id;
+	for (i=0; i < response.response.groups[0].items.length; i++)  {
+		const venueId = response.response.groups[0].items[i].venue.id;
 		getLocationDetails(response, venueId)
-
 	}
 }
 
 function getLocationDetails(response, venueId) {
 	const params = {
-		client_id: id,
-		client_secret: key,
-		v: version,
+		client_id: foursquareId,
+		client_secret: foursquareKey,
+		v: foursquareVersion,
 	}
 	const url = `${foursquareSearchURL}${venueId}?${formatQuery(params)}`
 	fetch(url)
 		.then(response => response.json())
-		.then(responseJson => console.log(responseJson))
+		.then(responseJson => displayResults(responseJson))
+		
+}
+
+function returnIfFound(item) {
+	if (item === undefined || !item) {
+		return ''
+	} else {
+		return item;
+	}
+}
+
+function displayResults(response) {
+	$('.js-search-results').append(
+		`<a href="#map-section"><li class="places-result-item"></a>
+			<img src=${getPhoto(response)} alt="${response.response.venue.name}" class="places-image">
+			<div>
+				<div class="places-name-and-rating">
+					<h3 class="name">${response.response.venue.name}</h3>
+					<div class="rating-container">
+						<p class="places-rating">${returnIfFound(response.response.venue.rating)}</p>
+					</div>
+				</div>
+				<div class="places-info">
+					<p class="places-category">${response.response.venue.categories[0].name}</p>
+					<p class="places-description">${returnIfFound(response.response.venue.description)}</p>
+				</div>
+			</div>
+		</li>`
+	)
+	$('.places-result-item').on('click', function() {
+		$('#map').empty();
+		const zipcode = response.response.venue.location.postalCode
+		updateMap(response.response.venue.name, zipcode)
+	})
 }
 
 function getPhoto(response) {
-	if (response.response.venue.bestPhoto === undefined) {
-		$('#main').prepend('')
+	if (response.response.venue.bestPhoto === undefined || !response.response.venue.bestPhoto) {
+		return ''
 	} else {
 		const imagePrefix = response.response.venue.bestPhoto.prefix
 		const imageSuffix = response.response.venue.bestPhoto.suffix
 		const imageUrl =`${imagePrefix}200x300${imageSuffix}`
-		$('#main').prepend(`<img src="${imageUrl}">`)
+		return imageUrl;
 	}
 }
-
-// $(searchFoursquare())
 
 //generate wikipedia information
 function searchWiki(query) {
@@ -81,23 +111,25 @@ function searchWiki(query) {
 	const url = `${searchURL}?${formatQuery(params)}`
 	fetch(url)
 		.then(response => response.json())
-		.then(responseJson => showInfo(responseJson))
+		.then(responseJson => showWikiInfo(responseJson))
 }
 
-function showInfo(response) {
+function showWikiInfo(response) {
+
+	console.log(response)
 	const pageId = Number(response.query.pageids[0])
 	const title = response.query.pages[pageId].title
 	const extract = response.query.pages[pageId].extract
-	$('#main').html(extract).prepend(title)
+	const url = `https://en.wikipedia.org/wiki/${title}`
+	$('.wikipedia-excerpt').html(extract);
+	$('.wikipedia-link').html(`More about ${title} <a href="${url}" target="_blank">here</a>`)
 }
 
-// $(searchWiki('korea'))
-
 //generate news information
-function searchNews(query)  {
+function searchNews(city)  {
 	const params = {
 		apiKey: newsKey,
-		q: query,
+		q: `${city}`,
 		pageSize: 4,
 		language: 'en',
 		sortBy: 'relevancy'
@@ -111,30 +143,75 @@ function searchNews(query)  {
 }
 
 function showNews(response) {
-	console.log(response)
-	const title = response.articles[0].title
-	const description = response.articles[0].description
-	const image = response.articles[0].urlToImage
-	$('#main').html(description).prepend(title).prepend(`<img height=100px src=${image}>`)
+	for (i=0; i < response.articles.length; i++) {
+		const title = response.articles[i].title;
+		const author = response.articles[i].author;
+		const source = response.articles[i].source.name;
+		const description = response.articles[i].description;
+		const image = response.articles[i].urlToImage;
+		const published = response.articles[i].publishedAt;
+		const url = response.articles[i].url;
+		$('.news-results').append(
+			`<li class="news-item">
+				<img src="${image}" alt="title" class="news-image">
+				<div>
+					<a href="${url}"><h3 class="name">${title}</h3></a>
+					<div class="news-info">
+						<p class="news-credit">by ${author} from ${source}</p>
+						<p class="news-description">${description}</p>
+						<p class="news-published">Published ${published}</p>
+					</div>
+				</div>
+			</li>`
+		)
+	}
+	
+	
 }
-
-// $(searchNews('chicago restaurants'))  //make first part of query the city, second part the category chosen
-
 
 //create map
 function createMap(query) {
-	$('.button').on('click', function() {
-		$('#map').append(`<iframe
-		  width="600"
-		  height="450"
-		  frameborder="0" style="border:0"
-		  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAneTY3_ApOO16hFLSvUESlvJAmiISfJ_c
-		    &q=${query}" allowfullscreen>
-		</iframe>`)
+	$('#map').empty();
+	$('#map').append(`<iframe
+	  width="600"
+	  height="450"
+	  frameborder="0" style="border:0"
+	  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAneTY3_ApOO16hFLSvUESlvJAmiISfJ_c
+	    &q=${query}" allowfullscreen>
+	</iframe>`)
+}
+
+function updateMap(query, zipcode) {
+	$('#map').empty();
+	$('#map').append(`<iframe
+	  width="600"
+	  height="450"
+	  frameborder="0" style="border:0"
+	  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAneTY3_ApOO16hFLSvUESlvJAmiISfJ_c
+	    &q=${query} ${zipcode}" allowfullscreen>
+	</iframe>`)
+	$('.map-section span').text(query)
+}
+
+function changeHeadings(city, category) {
+	$('.place-word').text(city.charAt(0).toUpperCase() + city.slice(1))
+	$('.map-place-word').text(city.charAt(0).toUpperCase() + city.slice(1))
+	$('.category-word').text(category)
+}
+
+function watchForm() {
+	$('form').submit(event => {
+		$('.js-search-results').empty();
+		$('.news-results').empty();
+		event.preventDefault();
+		const city = $('#city-search').val();
+		const category = $('#category-search').val();
+		searchFoursquare(category, city);
+		searchWiki(city);
+		searchNews(city);
+		createMap(city);
+		changeHeadings(city, category)
 	})
 }
 
-// $(createMap('midtown chopt'))
-
-
-
+$(watchForm())

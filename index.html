@@ -11,7 +11,7 @@
 		
 		<section class="hero">
 			<a href="#"><img src="#" alt="TravelBuddy" class="logo"></a>
-			<h1>Explore any city in the world!</h1>
+			<h1>Learn about any city in the world!</h1>
 			<form role="search" action="/" method="get" class="search-form">
 				<div>
 					<label for="city-search"><span class="hidden">Search for a city name</span></label>
@@ -49,13 +49,13 @@
 
 		<main>
 			<section class="places-section">
-				<h1>Results for category in place</h1>
+				<h1>Top 10 recommendations for "<span class="category-word"></span>" in <span class="place-word"></span></h1>
 				<ul class="js-search-results places-results">
 					<li class="places-result-item">
 						<img src="images/sample-img.png" alt="" class="places-image">
 						<div>
 							<div class="places-name-and-rating">
-								<a href="#map"><h3 class="name">Name</h3></a>
+								<a href="#map-section"><h3 class="name">Name</h3></a>
 								<div class="rating-container">
 									<p class="places-rating">9.2</p>
 								</div>
@@ -69,36 +69,38 @@
 					</li>
 				</ul>
 			</section>
-			<section class="map-section">
-				<h2>Map of place</h2>
-				<div id="map"></div>
-			</section>
-			<section class="wikipedia-section">
-				<h2>Background Information</h2>
-				<div class="wikipedia-info">
-					<h3 class="wikipedia-title">Title</h3>
-					<p class="wikipedia-excerpt">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-					<p class="wikipedia-link">More about Place <a href="#">here</a></p>
-				</div>
-			</section>
-			<section class="news-section">
-				<h2>News about place</h2>
-				<ul class="news-results">
-					<li class="news-item">
-						<img src="images/sample-img.png" alt="" class="news-image">
-						<div>
-							<a href="#"><h3 class="name">Title</h3></a>
-							<div class="news-info">
-								<p class="news-credit">by Author from Source</p>
-								<p class="news-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-								<p class="news-published">Published 10/4/2019 at 6:30pm EST</p>
+			<section class="details-section">
+				<section class="map-section" id="map-section">
+					<h2>Map of <span class="map-place-word"></span></h2>
+					<div id="map"></div>
+				</section>
+				<section class="wikipedia-section">
+					<h2>Background Information</h2>
+					<div class="wikipedia-info">
+						<p class="wikipedia-excerpt">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+						<p class="wikipedia-link"></p>
+					</div>
+				</section>
+				<section class="news-section">
+					<h2>News about <span class="place-word"></span></h2>
+					<ul class="news-results">
+						<li class="news-item">
+							<img src="images/sample-img.png" alt="" class="news-image">
+							<div>
+								<a href="#"><h3 class="name">Title</h3></a>
+								<div class="news-info">
+									<p class="news-credit">by Author from Source</p>
+									<p class="news-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<p class="news-published">Published 10/4/2019 at 6:30pm EST</p>
+								</div>
 							</div>
-						</div>
-					</li>
-				</ul>
+						</li>
+					</ul>
+				</section>
 			</section>
+			
 		</main>
 
 	</div>

@@ -141,6 +141,7 @@ html, body {
 #map {
 	height: 300px;
 	width: 100%;
+	display: static;
 }
 
 .map-section h2 {
@@ -148,9 +149,15 @@ html, body {
 	padding: 0 15px;
 }
 
+.map-section {
+	padding-top: 10px;
+	width: 100%;
+}
+
 .wikipedia-section {
 	background-color: lightgray;
 	padding: 15px;
+	margin-top: 50px;
 }
 
 .wikipedia-section h2, .wikipedia-section h3, .news-section h2 {
@@ -181,6 +188,10 @@ html, body {
 
 .news-section h2 {
 	padding: 0 15px;
+}
+
+.news-section {
+	padding-top: 15px;
 }
 
 
@@ -247,6 +258,14 @@ html, body {
 		height: 34px;
 	}
 
+	main {
+		padding: 0 12%;
+	}
+
+	#map {
+		height: 400px;
+	}
+
 }
 
 /*desktop media query*/
@@ -260,5 +279,23 @@ html, body {
 
 	#city-search, #category-search {
 		width: 250px;
+	}
+
+	main {
+		display: flex;
+		padding: 5%;
+		justify-content: space-around;
+	}
+
+	.details-section {
+		width: 40%;
+	}
+
+	.places-section {
+		width: 35%;
+	}
+
+	#map {
+		height: 400px;
 	}
 }
