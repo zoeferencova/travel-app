@@ -11,25 +11,29 @@
 		
 		<section class="hero">
 			<a href="#"><img src="#" alt="TravelBuddy" class="logo"></a>
-			<h1>Learn about any city in the world!</h1>
+			<h1>Explore any city in the world!</h1>
 			<form role="search" action="/" method="get" class="search-form">
-				<div>
-					<label for="city-search"><span class="hidden">Search for a city name</span></label>
-					<input type="text" id="city-search" class="city-input" placeholder="Search for any city">
+				<div class="search-bars">
+					<div class="search-bar">
+						<label for="city-search"><span class="hidden">Search for a city name</span></label>
+						<input type="text" id="city-search" class="city-input" placeholder="Search for any city" required>
+					</div>
+					<div class="search-bar">
+						<label for="category-search"><span class="hidden">Search for a category of place</span></label>
+						<input type="text" id="category-search" class="category-input" placeholder="What do you want to see?" required>
+					</div>
 				</div>
-				<div>
-					<label for="category-search"><span class="hidden">Search for a category of place</span></label>
-					<input type="text" id="category-search" class="category-input" placeholder="What do you want to see?">
-				</div>
+				
 				
 				<button type="submit" class="submit-button js-submit">
 			    	<span class="hidden">Submit Search</span>
 			    	<span>Submit</span>
 			  	</button>
-			  	<button type="submit" class="small-submit-button hidden">
+			  	<button type="submit" id="small-submit-button" class="hidden">
 			    	<span class="hidden">Submit Search</span>
 			    	<img src="https://img.icons8.com/ios-glyphs/50/000000/search.png">
 			  	</button>
+				
 			</form>
 		</section>
 		
@@ -47,9 +51,10 @@
 			</section>
 		</section>
 
-		<main>
+		<main class="hidden">
 			<section class="places-section">
-				<h1>Top 10 recommendations for "<span class="category-word"></span>" in <span class="place-word"></span></h1>
+				<h2>Top 10 recommendations for "<span class="category-word"></span>" in <span class="place-word"></span></h2>
+				<p class="hidden js-error-message"></p>
 				<ul class="js-search-results places-results">
 					<li class="places-result-item">
 						<img src="images/sample-img.png" alt="" class="places-image">
