@@ -224,8 +224,8 @@ function updateMap() {
 		console.log(address)
 		$('#map').empty();
 		$('#map').append(`<iframe
-		  width="600"
-		  height="450"
+		  width="100%"
+		  height="100%"
 		  frameborder="0" style="border:0"
 		  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAneTY3_ApOO16hFLSvUESlvJAmiISfJ_c
 		    &q=${name} ${address}" allowfullscreen>
