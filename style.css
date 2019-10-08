@@ -13,6 +13,9 @@ html, body {
 	padding: 0;
 }
 
+main {
+	margin-top: 30px;
+}
 
 .hero {
 	height: 65vh;
@@ -83,9 +86,13 @@ html, body {
 }
 
 /*after form is submitted*/
-.places-section h1 {
-	font-size: 20px;
-	margin-left: 15px;
+.places-section h2 {
+	font-size: 18px;
+	
+}
+
+.places-section h2, .places-subtitle {
+	margin: 10px 15px;
 }
 
 .places-results, .news-results {
@@ -97,11 +104,17 @@ html, body {
 	display: flex;
 	background-color: lightgray;
 	padding: 15px;
+	margin: 15px 0;
+	width: 100%;
+	text-align: left;
+	border: none;
+	cursor: pointer;
 }
 
 .places-image, .news-image {
-	height: 80px;
-	width: 80px;
+	width: 60px !important;
+	height: 60px;
+	object-fit: cover;
 }
 
 .places-result-item h3, .news-item h3 {
@@ -124,10 +137,20 @@ html, body {
 .places-name-and-rating {
 	display: flex;
 	justify-content: space-between;
+	width: 100%;
 }
+
+.places-text {
+	width: 100%;
+}
+
 .places-result-item p, .news-item p {
 	font-size: 12px;
 	margin: 6px 0;
+}
+
+.places-result-item p, .places-result-item h3 {
+	color: black;
 }
 
 .places-info {
@@ -177,6 +200,10 @@ html, body {
 .news-info {
 	padding: 0 10px;
 	margin-top: -7px;
+}
+
+.news-content {
+	width: 80%;
 }
 
 .news-item .news-credit, .news-item .news-published {
@@ -242,6 +269,22 @@ html, body {
 }
 
 @media only screen and (min-width: 600px) {
+	.places-image, .news-image {
+		width: 80px !important;
+		height: 80px;
+		object-fit: cover;
+	}
+
+	.places-section h2 {
+		font-size: 20px;
+		margin-left: 0;
+	}
+
+	.places-subtitle {
+		margin-left: 0;
+		margin-bottom: 35px;
+	}
+
 	.small-search-form {
 		width: auto;
 	}
@@ -316,6 +359,10 @@ html, body {
 
 /*desktop media query*/
 @media only screen and (min-width: 1200px) {
+	main {
+		margin-top: -40px;
+	}
+
 	.category-boxes {
 		width: 1200px;
 	}
@@ -327,7 +374,7 @@ html, body {
 		width: 250px;
 	}
 
-	main {
+	.main {
 		display: flex;
 		padding: 5%;
 		justify-content: space-around;
