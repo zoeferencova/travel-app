@@ -63,9 +63,12 @@ function getLocationDetails(response, venueId) {
 			}
 			throw new Error(response.statusText);
 		})
-		.then(responseJson => displayResults(responseJson))
+		.then(responseJson =>  {
+			displayResults(responseJson);
+			toggleInfoOnClick(responseJson);
+		})
 		.catch(err => {
-			$('.js-error-message').text(`Something went wrong: ${err.message}`).removeClass('hidden');
+			
 		});		
 }
 
@@ -92,6 +95,14 @@ function displayResults(response) {
 				<div class="places-info">
 					<p class="places-category">${response.response.venue.categories[0].name}</p>
 					<p class="places-description">${returnIfFound(response.response.venue.description)}</p>
+					<div class="additional-info hidden">
+						${returnIfFound(response.response.venue.price) === response.response.venue.price ? `<p>Price Level: ${response.response.venue.price.message}</p>` : ''}
+						<p>Contact Number: ${returnIfFound(response.response.venue.contact.phone)}</p>
+						<p>${returnIfFound(response.response.venue.hours.status)}</p>
+						<p>Hours:${formatHours(response)}</p>
+						<a href="${returnIfFound(response.response.venue.url)}" class="website" target="_blank">Link to Website</a>
+						<br><a href="#map-section" class="see-map">View on map</a>
+					</div>
 				</div>
 			</div>
 		</button>`
@@ -108,6 +119,32 @@ function getFoursquarePhoto(response) {
 		const imageUrl =`${imagePrefix}100x100${imageSuffix}`;
 		return imageUrl;
 	};
+}
+
+function formatHours(response) {
+	const arr = []
+	for (let i=0; i < response.response.venue.hours.timeframes.length; i++) {
+		const days = response.response.venue.hours.timeframes[i].days;
+		console.log(days)
+		const times = response.response.venue.hours.timeframes[i].open[0].renderedTime;
+		arr.push(`${days}: ${times}`)
+	}
+	return arr.map(e => `<br>${e}`);
+}
+
+function toggleInfoOnClick(response) {
+	$('.js-search-results').on('click', '.places-result-item', function(e) {
+		e.preventDefault()
+		const para = $(this).find('.additional-info')
+		$('.places-result-item .additional-info').not($(this)).addClass('hidden')
+		$(para).toggleClass('hidden')
+	})
+	$('.website').on('click', function(e) {
+		e.stopImmediatePropagation();
+	})
+	$('.see-map').on('click', function(e) {
+		e.stopImmediatePropagation();
+	})
 }
 
 //generate wikipedia information
@@ -224,7 +261,6 @@ function createMap(query) {
 function updateMap() {
 	$('.js-search-results').on('click', '.places-result-item', function(e) {
 		e.preventDefault();
-		$("html, body").animate({ scrollTop: $('#map-section').offset().top }, 500);
 		const name = $(this).find('.name').text();
 		const address = $(this).find('.address').text();
 		$('#map').empty();
@@ -236,6 +272,7 @@ function updateMap() {
 		    &q=${encodeURIComponent(name)} ${encodeURIComponent(address)}" allowfullscreen>
 		</iframe>`);
 		$('.map-section span').text(name);
+
 	});
 }
 
@@ -256,6 +293,19 @@ function recommendedCategories() {
 	})
 }
 
+function scrollToSection(name) {
+	if (name === 'map') {
+		$(`.${name}-anchor`).on('click', function() {
+			$("html, body").animate({ scrollTop: $(`#${name}-section`).offset().top });
+	})
+	} else {
+		$(`.${name}-anchor`).on('click', function() {
+		$("html, body").animate({ scrollTop: $(`#${name}-section`).offset().top - 120}, 500);
+	})
+	}
+	
+}
+
 function changeLayout() {
 	$('main').removeClass('hidden');
 	$('.rec-categories').addClass('hidden');
@@ -265,6 +315,7 @@ function changeLayout() {
 	$('#small-submit-button').removeClass('hidden');
 	$('.search-form').addClass('small-search-form');
 	$('.search-bars').addClass('small-search-bars');
+	$('.jump-to').removeClass('hidden')
 	$('#city-search').val('').addClass('small-search');
 	$('#category-search').val('').addClass('small-search');
 }
@@ -290,6 +341,10 @@ function watchForm() {
 		changeHeadings(city, category);
 		updateMap();
 		changeLayout();
+		scrollToSection('places')
+		scrollToSection('map')
+		scrollToSection('wikipedia')
+		scrollToSection('news')
 	});
 }
 

@@ -14,7 +14,7 @@ html, body {
 }
 
 main {
-	margin-top: 30px;
+	margin-top: 150px;
 }
 
 .hero {
@@ -58,6 +58,7 @@ main {
 }
 
 .rec-categories {
+	margin-top: 65vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -74,7 +75,7 @@ main {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	font-size: 11px;
+	font-size: 12px;
 	width: 288px;
 }
 
@@ -86,6 +87,23 @@ main {
 }
 
 /*after form is submitted*/
+.jump-to {
+	margin-top: 90px;
+	font-size: 11px;
+	text-align: center;
+	width: 100%;
+	background-color: white;
+	padding: 10px 0;
+}
+
+.jump-to, .hero {
+	position: fixed; top: 0;
+}
+
+.jump-to span, .jump-to a {
+	padding-right: 3px;
+}
+
 .places-section h2 {
 	font-size: 18px;
 	
@@ -164,14 +182,22 @@ main {
 	display: static;
 }
 
+
 .map-section h2 {
 	font-size: 16px;
-	padding: 0 15px;
+	padding: 10px 15px 0 15px;
 }
 
-.map-section {
-	padding-top: 10px;
-	width: 100%;
+.jump-target::before {
+  content: "";
+  display: block;
+  height: 120px;
+  margin: -120px 0 0; 
+}
+
+.see-map {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .wikipedia-section {
@@ -269,6 +295,11 @@ main {
 }
 
 @media only screen and (min-width: 600px) {
+	.jump-to {
+		margin-top: 50px;
+		font-size: 12px;
+	}
+
 	.places-image, .news-image {
 		width: 80px !important;
 		height: 80px;
@@ -349,6 +380,7 @@ main {
 
 	main {
 		padding: 0 12%;
+		margin-top: 100px;
 	}
 
 	#map {
@@ -361,6 +393,14 @@ main {
 @media only screen and (min-width: 1200px) {
 	main {
 		margin-top: -40px;
+	}
+
+	.jump-to {
+		display: none;
+	}
+
+	.top-bar {
+		position: static;
 	}
 
 	.category-boxes {
@@ -390,6 +430,10 @@ main {
 
 	#map {
 		height: 400px;
+	}
+
+	.see-map {
+		display: none;
 	}
 
 

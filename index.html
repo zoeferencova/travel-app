@@ -51,10 +51,18 @@
 		</section>
 
 		<p class="hidden js-error-message"></p>
+		<nav class="jump-to hidden">
+			<span>Jump to: </span>
+			<a href="#places-section" class="places-anchor">Search results</a>
+			<a href="#map-section" class="map-anchor">Map</a>
+			<a href="#wikipedia-section" class="wikipedia-anchor">Background information</a>
+			<a href="#news-section" class="news-anchor">News</a>
+		</nav>
 		<main class="main hidden" role="main">
-			<section class="places-section">
+			
+			<section class="places-section" id="places-section">
 				<h2>Top 10 recommendations for "<span class="category-word"></span>" in <span class="place-word"></span></h2>
-				<p class="places-subtitle">Click on a place for location information.</p>
+				<p class="places-subtitle">Click on a place for more information.</p>
 				<p class="hidden category-error-message"></p>
 				<ul class="js-search-results places-results">
 					
@@ -63,12 +71,12 @@
 
 			<section class="details-section">
 				
-				<section class="map-section" id="map-section">
+				<section class="map-section jump-target" id="map-section">
 					<h2>Map of <span class="map-place-word"></span></h2>
 					<div id="map"></div>
 				</section>
 				
-				<section class="wikipedia-section">
+				<section class="wikipedia-section" id="wikipedia-section">
 					<h2>Background Information</h2>
 					<div class="wikipedia-info">
 						<p class="wikipedia-excerpt">
@@ -78,7 +86,7 @@
 					</div>
 				</section>
 				
-				<section class="news-section">
+				<section class="news-section" id="news-section">
 					<h2>News about <span class="place-word"></span></h2>
 					<ul class="news-results">
 						<li class="news-item">
