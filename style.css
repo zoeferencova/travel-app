@@ -83,6 +83,8 @@ main {
 	height: 35vh;
 	text-align: center;
 	background-color: #FDF6D9;
+	position: fixed;
+	width: 100%;
 }
 
 .rec-categories h3 {
@@ -116,7 +118,7 @@ main {
 	font-style: italic;
 	text-align: center;
 	font-weight: normal;
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .box img {
@@ -367,6 +369,10 @@ main {
 		
 	}
 
+	.box p {
+		font-size: 15px;
+	}
+
 	.category-boxes {
 		width: 380px;
 	}
@@ -394,8 +400,8 @@ main {
 	}
 
 	.box img {
-		height: 60px;
-		margin-bottom: 5px;
+		height: 50px;
+		margin-bottom: 2px;
 	}
 
 	.category-boxes {
@@ -426,7 +432,7 @@ main {
 	}
 
 	.rec-categories h3 {
-		font-size: 23px;
+		font-size: 20px;
 	}
 
 	/*top bar and nav on results page*/
@@ -508,6 +514,10 @@ main {
 	}
 	.rec-categories h3 {
 		margin-bottom: 40px;
+	}
+
+	.box img {
+		height: 60px;
 	}
 
 	#city-search, #category-search {

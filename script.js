@@ -41,7 +41,8 @@ function searchFoursquare(query, near) {
 
 function getAllDetails(response) {
 	if (response.response.totalResults === 0) {
-		$('.category-error-message').text(`Sorry, there were no results for "${response.response.near}".`).removeClass('hidden');
+		console.log(response)
+		$('.category-error-message').text(`Sorry, there were no results for "${response.response.query}" in ${response.response.geocode.where}.`).removeClass('hidden');
 	}
 	for (let i=0; i < response.response.groups[0].items.length; i++)  {
 		const venueId = response.response.groups[0].items[i].venue.id;
