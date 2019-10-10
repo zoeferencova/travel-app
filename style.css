@@ -3,7 +3,7 @@
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Karla', sans-serif;
 }
 
 html, body {
@@ -17,6 +17,8 @@ main {
 	margin-top: 150px;
 }
 
+
+/*search front page*/
 .hero {
 	height: 65vh;
 	width: 100%;
@@ -25,12 +27,21 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	margin: 0 auto;
-	background-color: lightgray;
+	/*background-image: url('images/japan.jfif');*/
+	background-color: #012258;
+	/*background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;*/
 	position: relative;
 }
 
+
 .hero h1 {
 	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	margin-bottom: 50px;
+	font-family: 'Miriam Libre', sans-serif;
 }
 
 .logo {
@@ -45,16 +56,22 @@ main {
 	padding: 15px 10px;
 	height: 20px;
 	font-size: 15px;
+	border: none;
 }
 
 #city-search, #category-search {
-	width: 70%;	
+	width: 65%;	
 }
 
+
+
 .submit-button {
-	width: 30%;
+	width: 25%;
 	padding: 0px;
 	height: 30px;
+	border: none;
+	background-color: white;
+
 }
 
 .rec-categories {
@@ -65,10 +82,12 @@ main {
 	align-items: center;
 	height: 35vh;
 	text-align: center;
+	background-color: #FDF6D9;
 }
 
 .rec-categories h3 {
-	font-size: 16px;
+	font-size: 14px;
+	font-family: 'miriam libre', sans-serif;
 }
 
 .category-boxes {
@@ -77,23 +96,87 @@ main {
 	justify-content: center;
 	font-size: 12px;
 	width: 288px;
+	margin-top: -15px;
+}
+
+.category-boxes button {
+	background-color: transparent;
+	cursor: pointer;
 }
 
 .box {
 	height: 60px;
 	width: 60px;
 	margin: 6px;
-	background-color: gray;
+	border: none;
+	background-color: transparent;
+}
+
+.box p {
+	font-style: italic;
+	text-align: center;
+	font-weight: normal;
+	font-size: 15px;
+}
+
+.box img {
+	height: 50px;
+	margin-bottom: -10px;
 }
 
 /*after form is submitted*/
+
+/*top bar and nav*/
+.top-bar {
+	height: 90px;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.small-search {
+	height: 12px !important;
+	font-size: 12px !important;
+}
+
+.small-search-bars {
+	width: 100%;
+}
+
+.small-logo {
+	align-self: start;
+}
+
+#small-submit-button img {
+		height: 23px;
+	}
+
+#small-submit-button {
+	height: 34px;
+	width: 34px;
+	margin-left: 4px;
+	border: none;
+	background-color: transparent;
+	margin-right: 40px;
+}
+
+.small-search-form {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	width: 100%;
+}
+
 .jump-to {
 	margin-top: 90px;
 	font-size: 11px;
 	text-align: center;
 	width: 100%;
-	background-color: white;
+	background-color: #FDF6D9;
 	padding: 10px 0;
+	font-family: 'IBM Plex Mono', sans-serif;
+	text-transform: uppercase;
 }
 
 .jump-to, .hero {
@@ -101,9 +184,18 @@ main {
 }
 
 .jump-to span, .jump-to a {
-	padding-right: 3px;
+	padding-right: 2px;
 }
 
+.jump-to a {
+	text-decoration: none;
+	display: inline-block;
+	padding: 4px;
+	color: white;
+	background-color: #012258;
+}
+
+/*places section*/
 .places-section h2 {
 	font-size: 18px;
 	
@@ -120,13 +212,13 @@ main {
 
 .places-result-item {
 	display: flex;
-	background-color: lightgray;
 	padding: 15px;
-	margin: 15px 0;
+	margin: 3px 0;
 	width: 100%;
 	text-align: left;
 	border: none;
 	cursor: pointer;
+	background-color: #edf9fc;
 }
 
 .places-image, .news-image {
@@ -145,11 +237,13 @@ main {
 	display: block;
 	margin-top: 0;
 	font-size: 14px;
-	background-color: green;
-	height: 30px;
-	width: 30px;
+	background-color: #edffed;
+	height: 32px;
+	width: 32px;
 	text-align: center;
 	line-height: 30px;
+	border-radius: 50%;
+	border: 2px solid #5f995f;
 }
 
 .places-name-and-rating {
@@ -176,6 +270,8 @@ main {
 	margin-top: -20px;
 }
 
+
+/*map section*/
 #map {
 	height: 300px;
 	width: 100%;
@@ -200,8 +296,9 @@ main {
 	cursor: pointer;
 }
 
+/*wikipedia section*/
 .wikipedia-section {
-	background-color: lightgray;
+	background-color: #FDF6D9;
 	padding: 15px;
 	margin-top: 20px;
 }
@@ -210,15 +307,16 @@ main {
 	font-size: 16px;
  }
 
- .wikipedia-section p, .news-section p {
+.wikipedia-section p, .news-section p {
  	font-size: 14px;
  }
 
+/*news section*/
  .news-items {
  	display: flex;
  }
 
- .news-item {
+.news-item {
 	display: flex;
 	padding: 15px;
 }
@@ -244,42 +342,22 @@ main {
 	padding-top: 15px;
 }
 
-.top-bar {
-	height: 90px;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+.news-section a {
+	color: #012258;
 }
 
-.small-search {
-	height: 12px !important;
-	font-size: 12px !important;
+.news-credit, .news-published {
+	font-style: italic;
 }
 
-.small-search-bars {
-	width: 100%;
+.news-section h2, .wikipedia-section h2, .map-section h2 {
+	font-family: 'IBM Plex Mono', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
-.small-logo {
-	align-self: start;
-}
-
-#small-submit-button img {
-		height: 17px;
-	}
-
-#small-submit-button {
-	padding-top: 5px;
-	height: 34px;
-	margin-right: 30px;
-}
-
-.small-search-form {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: flex-end;
-	width: 100%;
+.places-section h2 {
+	font-family: 'Miriam Libre', sans-serif;
 }
 
 /*tablet media queries*/
@@ -295,51 +373,9 @@ main {
 }
 
 @media only screen and (min-width: 600px) {
-	.jump-to {
-		margin-top: 50px;
-		font-size: 12px;
-	}
-
-	.places-image, .news-image {
-		width: 80px !important;
-		height: 80px;
-		object-fit: cover;
-	}
-
-	.places-section h2 {
-		font-size: 20px;
-		margin-left: 0;
-	}
-
-	.places-subtitle {
-		margin-left: 0;
-		margin-bottom: 35px;
-	}
-
-	.small-search-form {
-		width: auto;
-	}
-
-	.small-search-bars {
-		width: auto;
-	}
-
-	.top-bar {
-		height: 50px;
-		justify-content: center;
-	}
-
-	.search-bar {
-		display: inline-block;
-	}
-
-	#small-submit-button {
-		display: block;
-	}
-
-
+	/*search front page*/
 	.hero h1 {
-		font-size: 25px;
+		font-size: 35px;
 	}
 
 	.logo {
@@ -353,6 +389,13 @@ main {
 		width: 100px;
 		margin: 15px;
 		background-color: gray;
+		font-size: 14px;
+		font-weight: bold;
+	}
+
+	.box img {
+		height: 60px;
+		margin-bottom: 5px;
 	}
 
 	.category-boxes {
@@ -378,11 +421,70 @@ main {
 		display: none;
 	}
 
-	main {
-		padding: 0 12%;
-		margin-top: 100px;
+	#small-submit-button {
+		margin-right: 0;
 	}
 
+	.rec-categories h3 {
+		font-size: 23px;
+	}
+
+	/*top bar and nav on results page*/
+	main {
+		padding: 0 12%;
+		margin-top: 130px;
+	}
+
+	.jump-to {
+		margin-top: 60px;
+		font-size: 12px;
+	}
+
+	.small-search-form {
+		width: auto;
+	}
+
+	.small-search-bars {
+		width: auto;
+	}
+
+	.top-bar {
+		height: 60px;
+		justify-content: center;
+	}
+
+	.search-bar {
+		display: inline-block;
+	}
+
+	#small-submit-button {
+		display: block;
+	}
+
+	.small-search {
+		height: 14px !important;
+		font-size: 14px !important;
+	}
+
+
+	/*places section*/
+	.places-image, .news-image {
+		width: 80px !important;
+		height: 80px;
+		object-fit: cover;
+	}
+
+	.places-section h2 {
+		font-size: 20px;
+		margin-left: 0;
+	}
+
+	.places-subtitle {
+		margin-left: 0;
+		margin-bottom: 35px;
+	}
+
+	/*map section*/
 	#map {
 		height: 400px;
 	}
@@ -391,16 +493,14 @@ main {
 
 /*desktop media query*/
 @media only screen and (min-width: 1200px) {
-	main {
-		margin-top: -40px;
+	/*search front page*/
+	.hero {
+		height: 70vh;
 	}
 
-	.jump-to {
-		display: none;
-	}
-
-	.top-bar {
-		position: static;
+	.rec-categories {
+		margin-top: 70vh;
+		height: 30vh;
 	}
 
 	.category-boxes {
@@ -412,6 +512,7 @@ main {
 
 	#city-search, #category-search {
 		width: 250px;
+		height: 34px;
 	}
 
 	.main {
@@ -420,6 +521,22 @@ main {
 		justify-content: space-around;
 	}
 
+	/*top bar and nav on results page*/
+	main {
+		margin-top: -50px;
+	}
+
+	.jump-to {
+		display: none;
+	}
+
+	.top-bar {
+		position: static;
+		height: 60px;
+	}
+
+	
+	/*places section*/
 	.details-section {
 		width: 40%;
 	}
@@ -428,6 +545,7 @@ main {
 		width: 35%;
 	}
 
+	/*map section*/
 	#map {
 		height: 400px;
 	}
@@ -435,8 +553,6 @@ main {
 	.see-map {
 		display: none;
 	}
-
-
 }
 
 .hidden {

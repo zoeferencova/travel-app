@@ -21,7 +21,7 @@ function searchFoursquare(query, near) {
 		v: foursquareVersion,
 		near,
 		query,
-		limit: 10
+		limit: 1
 	};
 	const url = `${foursquareSearchURL}${endpoint}?${formatQuery(params)}`;
 	fetch(url)
@@ -41,7 +41,7 @@ function searchFoursquare(query, near) {
 
 function getAllDetails(response) {
 	if (response.response.totalResults === 0) {
-		$('.category-error-message').text(`Sorry, there were no results for "${response.response.query}" in ${response.response.headerLocation}.`).removeClass('hidden');
+		$('.category-error-message').text(`Sorry, there were no results for "${response.response.near}".`).removeClass('hidden');
 	}
 	for (let i=0; i < response.response.groups[0].items.length; i++)  {
 		const venueId = response.response.groups[0].items[i].venue.id;
