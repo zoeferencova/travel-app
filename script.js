@@ -22,7 +22,7 @@ function searchFoursquare(query, near) {
 		v: foursquareVersion,
 		near,
 		query,
-		limit: 1
+		limit: 10
 	};
 	const url = `${foursquareSearchURL}${endpoint}?${formatQuery(params)}`;
 	fetch(url)
