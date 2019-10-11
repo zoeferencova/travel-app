@@ -242,7 +242,8 @@ main {
 	display: block;
 	margin-top: 0;
 	font-size: 14px;
-	background-color: #edffed;
+	font-weight: bold;
+	background-color: #c1e3c4;
 	height: 32px;
 	width: 32px;
 	text-align: center;
@@ -262,17 +263,21 @@ main {
 }
 
 .places-result-item p, .news-item p {
-	font-size: 12px;
+	font-size: 13px;
 	margin: 6px 0;
 }
 
-.places-result-item p, .places-result-item h3 {
-	color: black;
+.places-category {
+	font-style: italic;
 }
 
 .places-info {
 	padding: 0 10px;
 	margin-top: -20px;
+}
+
+.places-info a {
+	font-size: 13px;
 }
 
 
@@ -557,6 +562,8 @@ main {
 	.places-section {
 		width: 35%;
 	}
+
+
 
 	/*map section*/
 	#map {

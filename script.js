@@ -99,7 +99,7 @@ function displayResults(response) {
 					<div class="additional-info hidden">
 						${returnIfFound(response.response.venue.price) === response.response.venue.price ? `<p>Price Level: ${response.response.venue.price.message}</p>` : ''}
 						<p>Contact Number: ${returnIfFound(response.response.venue.contact.phone)}</p>
-						<p>${returnIfFound(response.response.venue.hours.status)}</p>
+						<p class="status">${returnIfFound(response.response.venue.hours.status)}</p>
 						<p>Hours:${formatHours(response)}</p>
 						<a href="${returnIfFound(response.response.venue.url)}" class="website" target="_blank">Link to Website</a>
 						<br><a href="#map-section" class="see-map">View on map</a>
