@@ -1,7 +1,7 @@
 # TravelBuddy
 A travel recommendation and information app
 
-Live app: https://zoeferencova.github.io/travel-app/
+Live app: https://zoeferencova.github.io/travelbuddy/
 
 # Summary
 
