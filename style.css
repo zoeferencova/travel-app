@@ -370,6 +370,10 @@ main {
 	font-family: 'Miriam Libre', sans-serif;
 }
 
+.js-error-message {
+	margin-top: 150px;
+}
+
 /*tablet media queries*/
 @media only screen and (min-width: 375px) {
 	.box {

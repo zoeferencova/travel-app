@@ -1,18 +1,19 @@
 'use strict';
 
+//keys and url components
 const foursquareId = '5S4DIWE5USNCY0HOPLLXFZGYUI1QDCBZVSZ3EQECIZTPWCDA';
 const foursquareKey = '45DSDFCFOGXPP51N4BXWFMB3LHCSMQYYZFBIO1UBT5LMNQTD';
 const foursquareVersion = '20180323'
 const foursquareSearchURL = 'https://api.foursquare.com/v2/venues/'
-
 const newsKey = '5ea9e10fbd6545338beb1c8f81941f00'
 
+//format search queries
 function formatQuery(params) {
 	const queryItems = Object.keys(params).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
 	return queryItems.join('&');
 } 
 
-//generate foursquare information
+//fetch foursquare information
 function searchFoursquare(query, near) {
 	const endpoint = 'explore';
 	const params = {
@@ -31,17 +32,16 @@ function searchFoursquare(query, near) {
 			}
 			throw new Error(response.statusText);
 		})
-		.then(responseJson => getAllDetails(responseJson))
+		.then(responseJson => getLocationId(responseJson))
 		.catch(err => {
-			console.log(err)
 			$('main').addClass('hidden');
 			$('.js-error-message').text(`Sorry, location "${near}" was not found.`).removeClass('hidden');
 		});
 }
 
-function getAllDetails(response) {
+//get location ID for each location
+function getLocationId(response) {
 	if (response.response.totalResults === 0) {
-		console.log(response)
 		$('.category-error-message').text(`Sorry, there were no results for "${response.response.query}" in ${response.response.geocode.where}.`).removeClass('hidden');
 	}
 	for (let i=0; i < response.response.groups[0].items.length; i++)  {
@@ -50,6 +50,7 @@ function getAllDetails(response) {
 	}
 }
 
+//get full location details for each location
 function getLocationDetails(response, venueId) {
 	const params = {
 		client_id: foursquareId,
@@ -73,6 +74,7 @@ function getLocationDetails(response, venueId) {
 		});		
 }
 
+//only return location details that are found in the response
 function returnIfFound(item) {
 	if (item === undefined || !item) {
 		return '';
@@ -81,6 +83,8 @@ function returnIfFound(item) {
 	}
 }
 
+
+//display places results
 function displayResults(response) {
 	$('.js-search-results').append(
 		`<button class="places-result-item">
@@ -111,6 +115,7 @@ function displayResults(response) {
 	
 }
 
+//get photo of location from response
 function getFoursquarePhoto(response) {
 	if (response.response.venue.bestPhoto === undefined || !response.response.venue.bestPhoto) {
 		return 'images/sample-img.png';
@@ -122,17 +127,18 @@ function getFoursquarePhoto(response) {
 	};
 }
 
+//format the hours data from response
 function formatHours(response) {
 	const arr = []
 	for (let i=0; i < response.response.venue.hours.timeframes.length; i++) {
 		const days = response.response.venue.hours.timeframes[i].days;
-		console.log(days)
 		const times = response.response.venue.hours.timeframes[i].open[0].renderedTime;
 		arr.push(`${days}: ${times}`)
 	}
 	return arr.map(e => `<br>${e}`);
 }
 
+//show additional info when a place is clicked on 
 function toggleInfoOnClick(response) {
 	$('.js-search-results').on('click', '.places-result-item', function(e) {
 		e.preventDefault()
@@ -148,7 +154,7 @@ function toggleInfoOnClick(response) {
 	})
 }
 
-//generate wikipedia information
+//fetch wikipedia information
 function searchWiki(query) {
 	const params = {
 	  origin: '*',
@@ -179,6 +185,7 @@ function searchWiki(query) {
 		})
 }
 
+//display wikipedia information
 function displayWikiInfo(response) {
 	const pageId = Number(response.query.pageids[0]);
 	if (pageId === -1 || !pageId) {
@@ -193,7 +200,7 @@ function displayWikiInfo(response) {
 	
 }
 
-//generate news information
+//fetch news information
 function searchNews(city)  {
 	const params = {
 		apiKey: newsKey,
@@ -214,11 +221,11 @@ function searchNews(city)  {
 		})
 		.then(responseJson => displayNews(responseJson))
 		.catch(err => {
-			console.log(err)
 			$('.js-error-message').text(`Something went wrong: ${err.message}`).removeClass('hidden');
 		})
 }
 
+//display news information
 function displayNews(response) {
 	if (!response.articles || response.articles.length === 0) {
 		$('.news-results').append('No news was found.');
@@ -247,7 +254,7 @@ function displayNews(response) {
 	};
 }
 
-//create map
+//create initial map of the search location
 function createMap(query) {
 	$('#map').empty();
 	$('#map').append(`<iframe
@@ -259,6 +266,7 @@ function createMap(query) {
 	</iframe>`);
 }
 
+//update map when individual location is clicked on
 function updateMap() {
 	$('.js-search-results').on('click', '.places-result-item', function(e) {
 		e.preventDefault();
@@ -277,16 +285,19 @@ function updateMap() {
 	});
 }
 
+//capitalize the first letter of every word in a phrase (used for city names)
 function toTitleCase(phrase) {
   return phrase.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 };
 
+//change headings to include the name of the city and category
 function changeHeadings(city, category) {
 	$('.place-word').text(city);
 	$('.map-place-word').text(city);
 	$('.category-word').text(category);
 }
 
+//populate category search text when user clicks on a category (search/landing page)
 function recommendedCategories() {
 	$('.box').on('click', function() {
 		const category = $(this).text();
@@ -294,6 +305,7 @@ function recommendedCategories() {
 	})
 }
 
+//for jump-to section on mobile/tablet view - scrolls to section that is clicked on
 function scrollToSection(name) {
 	if (name === 'map') {
 		$(`.${name}-anchor`).on('click', function() {
@@ -307,17 +319,18 @@ function scrollToSection(name) {
 	
 }
 
-// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-let vh = window.innerHeight * 0.01;
-// Then we set the value in the --vh custom property to the root of the document
-document.documentElement.style.setProperty('--vh', `${vh}px`);
+//set vh units to the current inner height of the window (allows vh to adapt to mobile browsers)
+function setVhUnits() {
+	let vh = window.innerHeight * 0.01;
+	document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-window.addEventListener('resize', () => {
-  // We execute the same script as before
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-});
+	window.addEventListener('resize', () => {
+	  let vh = window.innerHeight * 0.01;
+	  document.documentElement.style.setProperty('--vh', `${vh}px`);
+	});
+}
 
+//change layout of page when search is submitted
 function changeLayout() {
 	$('main').removeClass('hidden');
 	$('.rec-categories').addClass('hidden');
@@ -332,6 +345,7 @@ function changeLayout() {
 	$('#category-search').val('').addClass('small-search');
 }
 
+//clear sections when new search is submitted
 function clearPrevious() {
 	$('.js-search-results').empty();
 	$('.news-results').empty();
@@ -340,6 +354,7 @@ function clearPrevious() {
 	$('.category-error-message').empty();
 }
 
+//handle form submission
 function watchForm() {
 	$('form').submit(event => {
 		clearPrevious();
@@ -353,6 +368,7 @@ function watchForm() {
 		changeHeadings(city, category);
 		updateMap();
 		changeLayout();
+		setVhUnits();
 		scrollToSection('places')
 		scrollToSection('map')
 		scrollToSection('wikipedia')
