@@ -334,6 +334,8 @@ function setVhUnits() {
 function changeLayout() {
 	$('main').removeClass('hidden');
 	$('.rec-categories').addClass('hidden');
+	$('.small-logo').removeClass('hidden');
+	$('.large-logo').addClass('hidden')
 	$('h1').addClass('hidden');
 	$('.hero').addClass('top-bar');
 	$('.submit-button').addClass('hidden');

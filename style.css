@@ -43,14 +43,24 @@ main {
 	font-size: 20px;
 	font-weight: bold;
 	color: white;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 	font-family: 'Miriam Libre', sans-serif;
 }
 
-.logo {
+.large-logo {
+	position: absolute;
+	height: 35px;
+	top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+}
+
+.small-logo {
 	position: static;
-	align-self: center;
-	width: 20px;
+	height: 40px;
+	/*margin-left: 20px;*/
 }
 
 #city-search, #category-search, .submit-button {
@@ -135,10 +145,12 @@ main {
 
 /*top bar and nav*/
 .top-bar {
+	display: flex;
 	height: 90px;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
+	padding: 0 20px;
 }
 
 .small-search {
@@ -148,10 +160,6 @@ main {
 
 .small-search-bars {
 	width: 100%;
-}
-
-.small-logo {
-	align-self: start;
 }
 
 #small-submit-button img {
@@ -164,7 +172,7 @@ main {
 	margin-left: 4px;
 	border: none;
 	background-color: transparent;
-	margin-right: 40px;
+	/*margin-right: 40px;*/
 }
 
 .small-search-form {
@@ -398,10 +406,17 @@ main {
 		font-size: 35px;
 	}
 
-	.logo {
-		top: 10px;
-		left: 10px;
+	.large-logo {
+		top: 15px;
+		left: 15px;
 		position: absolute;
+		margin: 0;
+	}
+
+	.small-logo {
+		position: absolute;
+		left: 15px;
+		top: 9px;
 	}
 
 	.box {
@@ -557,6 +572,15 @@ main {
 	.top-bar {
 		position: static;
 		height: 60px;
+	}
+
+	.small-logo {
+		display: none;
+	}
+
+	.top-bar .large-logo {
+		display: inline-block;
+
 	}
 
 	
