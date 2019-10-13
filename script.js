@@ -352,7 +352,7 @@ function clearPrevious() {
 	$('.js-search-results').empty();
 	$('.news-results').empty();
 	$('.wikipedia-info p').empty();
-	$('.js-error-message').empty();
+	$('.js-error-message').addClass('hidden');
 	$('.category-error-message').empty();
 }
 
