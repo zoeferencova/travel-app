@@ -370,13 +370,13 @@ function watchForm() {
 		changeHeadings(city, category);
 		updateMap();
 		changeLayout();
-		setVhUnits();
-		scrollToSection('places')
-		scrollToSection('map')
-		scrollToSection('wikipedia')
-		scrollToSection('news')
+		scrollToSection('places');
+		scrollToSection('map');
+		scrollToSection('wikipedia');
+		scrollToSection('news');
 	});
 }
 
 $(watchForm())
 $(recommendedCategories())
+$(setVhUnits())

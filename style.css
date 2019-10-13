@@ -21,6 +21,14 @@ main {
 
 
 /*search front page*/
+.hero h1 {
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	margin-bottom: 30px;
+	font-family: 'Miriam Libre', sans-serif;
+}
+
 .hero {
 	height: 65vh;
 	height: calc(var(--vh, 1vh) * 65);
@@ -31,20 +39,12 @@ main {
 	justify-content: center;
 	margin: 0 auto;
 	background-image: url('images/background-mobile.jpg');
-	background-color: #012258;
+	background-color: #0F1330;
 	background-position: bottom center;
 	background-repeat: no-repeat;
 	background-size: 100%, 100%;
 	position: relative;
-}
-
-
-.hero h1 {
-	font-size: 20px;
-	font-weight: bold;
-	color: white;
-	margin-bottom: 30px;
-	font-family: 'Miriam Libre', sans-serif;
+	border: none;
 }
 
 .large-logo {
@@ -151,6 +151,7 @@ main {
 	justify-content: space-around;
 	align-items: center;
 	padding: 0 20px;
+	background: #0F1330;
 }
 
 .small-search {
