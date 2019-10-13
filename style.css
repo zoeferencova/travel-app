@@ -30,11 +30,11 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	margin: 0 auto;
-	/*background-image: url('images/japan.jfif');*/
+	background-image: url('images/background-mobile.jpg');
 	background-color: #012258;
-	/*background-position: center;
+	background-position: center bottom;
 	background-repeat: no-repeat;
-	background-size: cover;*/
+	background-size: 100%;
 	position: relative;
 }
 
@@ -97,7 +97,7 @@ main {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	background-color: #FDF6D9;
+	background-color: #fff8c7;
 	position: fixed;
 	width: 100%;
 }
@@ -402,6 +402,10 @@ main {
 
 @media only screen and (min-width: 600px) {
 	/*search front page*/
+	.hero {
+		background-image: url('images/background.jpg');
+	}
+
 	.hero h1 {
 		font-size: 35px;
 	}
