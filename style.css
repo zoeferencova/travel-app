@@ -27,7 +27,6 @@ main {
 	color: white;
 	margin-bottom: 40px;
 	font-family: 'Miriam Libre', sans-serif;
-	margin-top: -50px;
 }
 
 .hero {
@@ -411,6 +410,7 @@ main {
 
 	.hero h1 {
 		font-size: 35px;
+		margin-top: -50px;
 	}
 
 	.large-logo {
