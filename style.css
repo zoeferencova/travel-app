@@ -547,8 +547,8 @@ main {
 @media only screen and (min-width: 1000px) {
 	/*search front page*/
 	.hero {
-		height: 70vh;
-		height: calc(var(--vh, 1vh) * 70);
+		height: 75vh;
+		height: calc(var(--vh, 1vh) * 75);
 	}
 
 	.logotext {
@@ -560,10 +560,10 @@ main {
 	}
 
 	.rec-categories {
-		margin-top: 69vh;
-		height: calc(var(--vh, 1vh) * 69);
-		height: 31vh;
-		height: calc(var(--vh, 1vh) * 31);
+		margin-top: 74vh;
+		height: calc(var(--vh, 1vh) * 74);
+		height: 26vh;
+		height: calc(var(--vh, 1vh) * 26);
 	}
 
 	.category-boxes {
