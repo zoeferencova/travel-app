@@ -18,8 +18,6 @@ main {
 }
 
 
-
-
 /*search front page*/
 .hero h1 {
 	font-size: 20px;
@@ -43,8 +41,6 @@ main {
 	background-position: bottom center;
 	background-repeat: no-repeat;
 	background-size: 100%, 100%;
-	position: relative;
-	border: none;
 }
 
 .large-logo {
@@ -88,10 +84,10 @@ main {
 }
 
 .rec-categories {
-	margin-top: 65vh;
-	margin-top: calc(var(--vh, 1vh) * 65);
-	height: 35vh;
-	height: calc(var(--vh, 1vh) * 35);
+	margin-top: 64vh;
+	margin-top: calc(var(--vh, 1vh) * 64);
+	height: 36vh;
+	height: calc(var(--vh, 1vh) * 36);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -100,10 +96,11 @@ main {
 	background-color: #fff8c7;
 	position: fixed;
 	width: 100%;
+	overflow: hidden;
 }
 
 .rec-categories h3 {
-	font-size: 14px;
+	font-size: 15px;
 	font-family: 'miriam libre', sans-serif;
 }
 
@@ -129,11 +126,13 @@ main {
 	background-color: transparent;
 }
 
-.box p {
+.box span {
+	display: block;
 	font-style: italic;
 	text-align: center;
 	font-weight: normal;
-	font-size: 13px;
+	font-size: 12px;
+	margin-top: 15px;
 }
 
 .box img {
@@ -387,14 +386,14 @@ main {
 }
 
 /*tablet media queries*/
-@media only screen and (min-width: 375px) {
+@media only screen and (min-width: 375px) and (min-height: 600px){
 	.box {
-		margin: 15px;
+		margin: 12px;
 		
 	}
 
-	.box p {
-		font-size: 15px;
+	.box span {
+		font-size: 12px;
 	}
 
 	.category-boxes {
@@ -409,7 +408,7 @@ main {
 	}
 
 	.hero h1 {
-		font-size: 35px;
+		font-size: 25px;
 		margin-top: -50px;
 	}
 
@@ -427,9 +426,9 @@ main {
 	}
 
 	.box {
-		height: 100px;
-		width: 100px;
-		margin: 15px;
+		height: 80px;
+		width: 80px;
+		margin: 7px 10px;
 		background-color: gray;
 		font-size: 14px;
 		font-weight: bold;
@@ -437,11 +436,11 @@ main {
 
 	.box img {
 		height: 50px;
-		margin-bottom: 2px;
 	}
 
 	.category-boxes {
-		width: 520px;
+		margin-top: 3px;
+		width: 420px;
 	}
 
 	form {
@@ -468,7 +467,8 @@ main {
 	}
 
 	.rec-categories h3 {
-		font-size: 20px;
+		font-size: 18px;
+		padding-top: 10px;
 	}
 
 	/*top bar and nav on results page*/
@@ -534,26 +534,38 @@ main {
 }
 
 /*desktop media query*/
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1000px) {
 	/*search front page*/
 	.hero {
 		height: 70vh;
+		height: calc(var(--vh, 1vh) * 70);
+	}
+
+	.hero h1 {
+		font-size: 35px;
 	}
 
 	.rec-categories {
-		margin-top: 70vh;
-		height: 30vh;
+		margin-top: 69vh;
+		height: calc(var(--vh, 1vh) * 69);
+		height: 31vh;
+		height: calc(var(--vh, 1vh) * 31);
 	}
 
 	.category-boxes {
 		width: 1200px;
 	}
 	.rec-categories h3 {
-		margin-bottom: 40px;
+		margin-bottom: 30px;
+		font-size: 20px;
 	}
 
 	.box img {
 		height: 60px;
+	}
+
+	.box span {
+		font-size: 14px;
 	}
 
 	#city-search, #category-search {

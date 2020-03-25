@@ -86,6 +86,7 @@ function returnIfFound(item) {
 
 //display places results
 function displayResults(response) {
+	$('main').removeClass('hidden');
 	$('.js-search-results').append(
 		`<button class="places-result-item">
 			<img src=${getFoursquarePhoto(response)} alt="${response.response.venue.name}" class="places-image">
@@ -331,7 +332,7 @@ function setVhUnits() {
 
 //change layout of page when search is submitted
 function changeLayout() {
-	$('main').removeClass('hidden');
+	
 	$('.rec-categories').addClass('hidden');
 	$('.small-logo').removeClass('hidden');
 	$('.large-logo').addClass('hidden')
@@ -353,6 +354,7 @@ function clearPrevious() {
 	$('.wikipedia-info p').empty();
 	$('.js-error-message').addClass('hidden');
 	$('.category-error-message').empty();
+	$('main').addClass('hidden');
 }
 
 //handle form submission
