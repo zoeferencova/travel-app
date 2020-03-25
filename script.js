@@ -197,7 +197,6 @@ function displayWikiInfo(response) {
 		$('.wikipedia-excerpt').html(extract);
 		$('.wikipedia-link').html(`More about ${title} <a href="${url}" target="_blank">here</a>`);
 	};
-	
 }
 
 //fetch news information
