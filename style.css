@@ -3,7 +3,7 @@
 }
 
 body {
-	font-family: 'Karla', sans-serif;
+	font-family: 'Assistant', sans-serif;
 }
 
 html, body {
@@ -24,7 +24,7 @@ main {
 	font-weight: bold;
 	color: white;
 	margin-bottom: 40px;
-	font-family: 'Miriam Libre', sans-serif;
+	font-family: "Quicksand";
 }
 
 .hero {
@@ -36,34 +36,38 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	margin: 0 auto;
-	background-image: url('images/background-mobile.jpg');
+	background-image: url('images/amalfi.jpg');
 	background-color: #0F1330;
-	background-position: bottom center;
+	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 100%, 100%;
+	background-size: cover;
 }
 
-.large-logo {
+.logo {
 	position: absolute;
-	height: 35px;
 	top: 15px;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
+	left: 20px;
+	color: white;
+	text-decoration: none;
+	font-family: 'Quicksand';
+	font-size: 22px;
+	letter-spacing: 2px;
 }
 
-.small-logo {
-	position: static;
-	height: 40px;
-	/*margin-left: 20px;*/
+.logo i {
+	margin-right: 5px;
+	font-size: 27px;
+}
+
+.logotext {
+	display: none;
 }
 
 #city-search, #category-search, .submit-button {
 	display: block;
 	margin: 5px auto;
 	padding: 15px 10px;
-	height: 20px;
+	height: 30px;
 	font-size: 15px;
 	border: none;
 }
@@ -72,15 +76,19 @@ main {
 	width: 65%;	
 }
 
-
-
 .submit-button {
-	width: 25%;
+	width: 30%;
 	padding: 0px;
-	height: 30px;
+	height: 40px;
 	border: none;
-	background-color: white;
-
+	background-color: #b5313c;
+	margin-top: 18px;
+	border-radius: 7px;
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 14px;
 }
 
 .rec-categories {
@@ -93,7 +101,7 @@ main {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	background-color: #fff8c7;
+	background-color: #fcfcf5;
 	position: fixed;
 	width: 100%;
 	overflow: hidden;
@@ -101,7 +109,8 @@ main {
 
 .rec-categories h3 {
 	font-size: 15px;
-	font-family: 'miriam libre', sans-serif;
+	font-weight: bold;
+	letter-spacing: 0.6px;
 }
 
 .category-boxes {
@@ -128,9 +137,10 @@ main {
 
 .box span {
 	display: block;
-	font-style: italic;
 	text-align: center;
-	font-weight: normal;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 	font-size: 12px;
 	margin-top: 15px;
 }
@@ -145,7 +155,7 @@ main {
 /*top bar and nav*/
 .top-bar {
 	display: flex;
-	height: 90px;
+	height: 110px;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
@@ -154,33 +164,36 @@ main {
 }
 
 .small-search {
-	height: 12px !important;
+	height: 12px;
 	font-size: 12px !important;
 }
 
 .small-search-bars {
 	width: 100%;
+	height: 100%;
+	margin-left: 30px;
 }
 
-#small-submit-button img {
-		height: 23px;
-	}
+#small-submit-button i {
+	font-size: 21px;
+	color: white;
+}
 
 #small-submit-button {
-	height: 34px;
-	width: 34px;
-	margin-left: 4px;
+	height: 40px;
+	width: 50px;
 	border: none;
-	background-color: transparent;
-	/*margin-right: 40px;*/
+	background-color: #b5313c;
+	border-radius: 50px;
 }
 
 .small-search-form {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: flex-end;
+	margin-top: -20px;
 	width: 100%;
+	justify-content: space-between;
 }
 
 .jump-to {
@@ -403,26 +416,10 @@ main {
 
 @media only screen and (min-width: 600px) {
 	/*search front page*/
-	.hero {
-		background-image: url('images/background.jpg');
-	}
 
 	.hero h1 {
 		font-size: 25px;
 		margin-top: -50px;
-	}
-
-	.large-logo {
-		top: 15px;
-		left: 15px;
-		position: absolute;
-		margin: 0;
-	}
-
-	.small-logo {
-		position: absolute;
-		left: 15px;
-		top: 9px;
 	}
 
 	.box {
@@ -452,10 +449,18 @@ main {
 
 	#city-search, #category-search {
 		width: 210px;
+		margin: 0px;
+		height: 40px;
 	}
 
-	#city-search, #category-search, .small-submit-button {
-		margin: 0 2px;
+	#category-search {
+		margin-left: -4px;
+		border-left: 1px solid gray;
+	}
+
+	#city-search {
+		border-top-left-radius: 7px;
+		border-bottom-left-radius: 7px;
 	}
 
 	.submit-button {
@@ -464,6 +469,10 @@ main {
 
 	#small-submit-button {
 		margin-right: 0;
+		border-top-right-radius: 7px;
+		border-bottom-right-radius: 7px;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
 	}
 
 	.rec-categories h3 {
@@ -484,10 +493,12 @@ main {
 
 	.small-search-form {
 		width: auto;
+		margin-top: 0;
 	}
 
 	.small-search-bars {
 		width: auto;
+		height: 40px;
 	}
 
 	.top-bar {
@@ -500,14 +511,13 @@ main {
 	}
 
 	#small-submit-button {
-		display: block;
+		display: inline-block;
+		height: 40px;
 	}
 
-	.small-search {
-		height: 14px !important;
-		font-size: 14px !important;
+	#small-submit-button i {
+		font-size: 16px;
 	}
-
 
 	/*places section*/
 	.places-image, .news-image {
@@ -541,8 +551,12 @@ main {
 		height: calc(var(--vh, 1vh) * 70);
 	}
 
+	.logotext {
+		display: inline;
+	}
+
 	.hero h1 {
-		font-size: 35px;
+		font-size: 30px;
 	}
 
 	.rec-categories {
@@ -556,21 +570,16 @@ main {
 		width: 1200px;
 	}
 	.rec-categories h3 {
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 		font-size: 20px;
 	}
 
 	.box img {
-		height: 60px;
-	}
-
-	.box span {
-		font-size: 14px;
+		height: 50px;
 	}
 
 	#city-search, #category-search {
 		width: 250px;
-		height: 34px;
 	}
 
 	.main {
@@ -592,16 +601,6 @@ main {
 		position: static;
 		height: 60px;
 	}
-
-	.small-logo {
-		display: none;
-	}
-
-	.top-bar .large-logo {
-		display: inline-block;
-
-	}
-
 	
 	/*places section*/
 	.details-section {
