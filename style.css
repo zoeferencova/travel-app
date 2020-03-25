@@ -57,6 +57,7 @@ main {
 .logo i {
 	margin-right: 5px;
 	font-size: 27px;
+	color: white;
 }
 
 .logotext {
@@ -553,6 +554,10 @@ main {
 
 	.logotext {
 		display: inline;
+	}
+
+	.logo i {
+		color: #b5313c;
 	}
 
 	.hero h1 {
