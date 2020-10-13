@@ -5,7 +5,6 @@ const foursquareId = '5S4DIWE5USNCY0HOPLLXFZGYUI1QDCBZVSZ3EQECIZTPWCDA';
 const foursquareKey = '45DSDFCFOGXPP51N4BXWFMB3LHCSMQYYZFBIO1UBT5LMNQTD';
 const foursquareVersion = '20180323'
 const foursquareSearchURL = 'https://api.foursquare.com/v2/venues/'
-const newsKey = '327645d9447b429c8d5dd32fa279dbd4'
 
 //format search queries
 function formatQuery(params) {
@@ -200,60 +199,6 @@ function displayWikiInfo(response) {
 	};
 }
 
-//fetch news information
-function searchNews(city)  {
-	const params = {
-		apiKey: newsKey,
-		q: `${city}`,
-		pageSize: 4,
-		language: 'en',
-		sortBy: 'relevancy'
-	};
-
-	const searchURL = 'https://newsapi.org/v2/everything';
-	const url = `${searchURL}?${formatQuery(params)}`;
-	fetch(url)
-		.then(response =>  {
-			if (response.ok) {
-				return response.json();
-			}
-			throw new Error(response.statusText)
-		})
-		.then(responseJson => displayNews(responseJson))
-		.catch(err => {
-			$('.js-error-message').text(`Something went wrong: ${err.message}`).removeClass('hidden');
-		})
-}
-
-//display news information
-function displayNews(response) {
-	if (!response.articles || response.articles.length === 0) {
-		$('.news-results').append('No news was found.');
-	}
-	for (let i=0; i < response.articles.length; i++) {
-		const title = response.articles[i].title;
-		const author = response.articles[i].author;
-		const source = response.articles[i].source.name;
-		const description = response.articles[i].description;
-		const image = response.articles[i].urlToImage;
-		const published = response.articles[i].publishedAt;
-		const url = response.articles[i].url;
-		$('.news-results').append(
-			`<li class="news-item">
-				<img src="${image}" alt="${title}" class="news-image">
-				<div class="news-content">
-					<a href="${url}" target="_blank"><h3 class="name">${title}</h3></a>
-					<div class="news-info">
-						<p class="news-credit">by ${author} from ${source}</p>
-						<p class="news-description">${description}</p>
-						<p class="news-published">Published ${published}</p>
-					</div>
-				</div>
-			</li>`
-		);
-	};
-}
-
 //create initial map of the search location
 function createMap(query) {
 	$('#map').empty();
@@ -350,7 +295,6 @@ function changeLayout() {
 //clear sections when new search is submitted
 function clearPrevious() {
 	$('.js-search-results').empty();
-	$('.news-results').empty();
 	$('.wikipedia-info p').empty();
 	$('.js-error-message').addClass('hidden');
 	$('.category-error-message').empty();
@@ -366,7 +310,6 @@ function watchForm() {
 		const category = $('#category-search').val();
 		searchFoursquare(category, city);
 		searchWiki(city);
-		searchNews(city);
 		createMap(city);
 		changeHeadings(city, category);
 		updateMap();
@@ -374,7 +317,6 @@ function watchForm() {
 		scrollToSection('places');
 		scrollToSection('map');
 		scrollToSection('wikipedia');
-		scrollToSection('news');
 	});
 }
 
