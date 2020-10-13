@@ -5,7 +5,7 @@ const foursquareId = '5S4DIWE5USNCY0HOPLLXFZGYUI1QDCBZVSZ3EQECIZTPWCDA';
 const foursquareKey = '45DSDFCFOGXPP51N4BXWFMB3LHCSMQYYZFBIO1UBT5LMNQTD';
 const foursquareVersion = '20180323'
 const foursquareSearchURL = 'https://api.foursquare.com/v2/venues/'
-const newsKey = '5ea9e10fbd6545338beb1c8f81941f00'
+const newsKey = '327645d9447b429c8d5dd32fa279dbd4'
 
 //format search queries
 function formatQuery(params) {
